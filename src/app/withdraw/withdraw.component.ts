@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Online} from '../online';
+import { OnlineserviceService } from '../onlineservice.service';
 
 @Component({
   selector: 'app-withdraw',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WithdrawComponent implements OnInit {
 
-  constructor() { }
+	public errMessage: string;
+	online: Online= new Online();
+	online1: Online = new Online();
+	accNo:number;
+	withdrawAmount:number;
+  constructor(private onlineservice: OnlineserviceService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
+	withdraw(){
+		this.onlineservice.get(this.accNo).subscribe(data=>(this.online=data),error => (this.errMessage = error));
+		if(this.online.balance<this.withdrawAmount)
+		{
+			alert("Insuffient Balance");
+		}else if(this.online.balance>this.withdrawAmount)
+		{
+			alert(this.accNo+" withdraw amount is: "+this.withdrawAmount);
+			this.onlineservice.withdraw(this.accNo,this.withdrawAmount).subscribe(data=>(this.online1=data));
+		}
+	}
 }

@@ -1,1 +1,55 @@
-<p>create works!</p>
+<div style="margin-left: 0%;margin-top: -29%;background-color:rgb(230, 243, 212);bottom: 0;">
+<br><br><br><br><br><br><br><br>
+    <h3 style="color: blue" align="center" >Create Account</h3>
+    <div class="container">
+      
+<form class="container panel-default col-md-4">
+
+  
+  <div class="form-group" >
+
+    <label>Name</label>
+    <input required minlength="4" type="text" name="name" class="form-control" [(ngModel)]="online.accHolder" required>
+    
+  </div>
+  
+  
+   <div class="form-group" >
+
+    <label>Phoneno </label>
+    <input type="number" name="Phoneno" class="form-control"  [(ngModel)]="online.phoneno" required>
+
+  </div>
+  <div class="form-group" >
+
+    <label>Email</label>
+    <input type="text" pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" name="email" class="form-control" [(ngModel)]="online.email" required>
+
+  </div>
+
+  <div class="form-group" >
+
+    <label>Password</label>
+    <input type="password" name="Password" class="form-control" [(ngModel)]="online.password" required>
+
+  </div>
+  
+  <div class="form-group" >
+
+    <label>Balance </label>
+    <input type="number" name="balance" class="form-control" [(ngModel)]="online.balance" required>
+
+  </div>
+ 
+
+
+  
+  <button type="submit" class="btn btn-success" (click)='createAccount()'>Add Account</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  
+  <button type="reset" class="btn btn-danger">Cancel Account</button>
+<br><br>
+</form>
+</div>
+</div>
+
+

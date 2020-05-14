@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+ import { Component, OnInit } from '@angular/core';
+
+import { Online} from '../online';
+import { OnlineserviceService } from '../onlineservice.service';
 
 @Component({
   selector: 'app-create',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateComponent implements OnInit {
 
-  constructor() { }
+  online: Online= new Online();
 
-  ngOnInit(): void {
+  constructor(private onlineservice:OnlineserviceService) { }
+
+  ngOnInit() {
   }
-
+  
+	createAccount()
+	{
+		this.online.accNo = Math.floor(Math.random() * (10000 - 1) + 1);
+		this.onlineservice.createAccount(this.online).subscribe(data=>console.log(data), error=>console.log(error));
+		alert(this.online.accHolder+" account is created by account number "+this.online.accNo);
+	}
+	
 }
